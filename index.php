@@ -1,5 +1,4 @@
 <?php
 
-$heading = 'Home';
-
-include __DIR__ . '/views/index.view.php';
+require __DIR__ . '/config/bootstrap.php';
+require __DIR__ . '/views/index.view.php';
