@@ -19,10 +19,25 @@ if (!function_exists('dd')) {
 
 function currentPage(): string
 {
-    return $_SERVER['REQUEST_URI'];
+    return parse_url($_SERVER['REQUEST_URI'])['path'] ?? '';
 }
 
 function urlIs(string $url): bool
 {
     return currentPage() === $url;
+}
+
+function controller(string $name): void
+{
+    require __DIR__ . "/../controllers/{$name}.php";
+}
+
+function render(string $name, string $suffix = '.view'): void
+{
+    require __DIR__ . "/../views/{$name}{$suffix}.php";
+}
+
+function heading(string $default = ''): string
+{
+    return routes()[currentPage()]['heading'] ?? $default;
 }
