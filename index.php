@@ -11,6 +11,8 @@ require __DIR__ . '/src/Components/Database.php';
 $config = require __DIR__ . '/bootstrap/config.php';
 
 $db = new Database($config['database'], 'db', 'db');
-$posts = $db->query('SELECT * FROM posts;')->fetchAll();
+
+$id = $_GET['id'];
+$posts = $db->query('SELECT * FROM posts where id = :id;', ['id' => $id])->fetch();
 
 dd($posts);

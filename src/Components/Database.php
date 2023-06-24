@@ -18,10 +18,10 @@ class Database
         ]);
     }
 
-    public function query(string $query): PDOStatement
+    public function query(string $query, array $params = []): PDOStatement
     {
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
 
         return $stmt;
     }
