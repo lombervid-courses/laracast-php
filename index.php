@@ -7,7 +7,10 @@ require __DIR__ . '/bootstrap/helpers.php';
 
 require __DIR__ . '/src/Components/Database.php';
 
-$db = new Database();
-$posts = $db->query('SELECT * FROM posts;')->fetchAll(PDO::FETCH_OBJ);
+
+$config = require __DIR__ . '/bootstrap/config.php';
+
+$db = new Database($config['database'], 'db', 'db');
+$posts = $db->query('SELECT * FROM posts;')->fetchAll();
 
 dd($posts);

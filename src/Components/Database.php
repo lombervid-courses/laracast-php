@@ -9,10 +9,13 @@ class Database
 {
     private PDO $conn;
 
-    public function __construct()
+    public function __construct(array $config, string $username, string $password)
     {
-        $dns = 'mysql:host=db;port=3306;dbname=db;charset=utf8mb4;user=db;password=db';
-        $this->conn = new PDO($dns);
+        $dns = 'mysql:' . http_build_query($config, arg_separator: ';');
+
+        $this->conn = new PDO($dns, $username, $password, [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+        ]);
     }
 
     public function query(string $query): PDOStatement
