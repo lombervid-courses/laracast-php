@@ -29,12 +29,12 @@ function urlIs(string $url): bool
 
 function controller(string $name): void
 {
-    require __DIR__ . "/../controllers/{$name}.php";
+    require __DIR__ . "/../app/controllers/{$name}.php";
 }
 
 function render(string $name, string $suffix = '.view'): void
 {
-    require __DIR__ . "/../views/{$name}{$suffix}.php";
+    require __DIR__ . "/../app/views/{$name}{$suffix}.php";
 }
 
 function heading(string $default = ''): string

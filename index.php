@@ -2,8 +2,8 @@
 
 use App\Components\Database;
 
-require __DIR__ . '/config/helpers.php';
-// require __DIR__ . '/config/router.php';
+require __DIR__ . '/bootstrap/helpers.php';
+// require __DIR__ . '/bootstrap/router.php';
 
 require __DIR__ . '/src/Components/Database.php';
 
