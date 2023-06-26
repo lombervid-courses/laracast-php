@@ -23,7 +23,7 @@ function routeToController(string $uri): void
 function abort(int $code = 404): void
 {
     http_response_code($code);
-    render($code, '');
+    render($code, suffix: '');
     die();
 }
 

@@ -32,8 +32,10 @@ function controller(string $name): void
     require __DIR__ . "/../app/controllers/{$name}.php";
 }
 
-function render(string $name, string $suffix = '.view'): void
+function render(string $name, array $data = [], string $suffix = '.view'): void
 {
+    extract($data);
+
     require __DIR__ . "/../app/views/{$name}{$suffix}.php";
 }
 
