@@ -8,7 +8,7 @@
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
 
-            <?php foreach (routes() as $url => ['name' => $name]): ?>
+            <?php foreach (navbar() as $url => ['name' => $name]): ?>
               <?php if (urlIs($url)): ?>
                 <a href="<?= $url ?>" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page"><?= $name ?></a>
                 <?php else: ?>

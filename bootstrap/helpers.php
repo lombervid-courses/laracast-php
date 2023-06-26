@@ -37,7 +37,12 @@ function render(string $name, string $suffix = '.view'): void
     require __DIR__ . "/../app/views/{$name}{$suffix}.php";
 }
 
+function navbar()
+{
+    return require __DIR__ . '/navbar.php';
+}
+
 function heading(string $default = ''): string
 {
-    return routes()[currentPage()]['heading'] ?? $default;
+    return navbar()[currentPage()]['heading'] ?? $default;
 }

@@ -3,21 +3,9 @@
 function routes(): array
 {
     return [
-        '/' => [
-            'name' => 'Home',
-            'heading' => 'Home',
-            'controller' => 'home',
-        ],
-        '/about' => [
-            'name' => 'About',
-            'heading' => 'About Us',
-            'controller' => 'about',
-        ],
-        '/contact' => [
-            'name' => 'Contact',
-            'heading' => 'Contact Us',
-            'controller' => 'contact',
-        ],
+        '/' => 'home',
+        '/about' => 'about',
+        '/contact' => 'contact',
     ];
 }
 
@@ -26,7 +14,7 @@ function routeToController(string $uri): void
     $routes = routes();
 
     if (array_key_exists($uri, $routes)) {
-        controller($routes[$uri]['controller']);
+        controller($routes[$uri]);
     } else {
         abort();
     }
