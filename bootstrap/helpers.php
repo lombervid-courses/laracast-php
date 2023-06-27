@@ -1,5 +1,7 @@
 <?php
 
+use App\Components\Response;
+
 if (!function_exists('dump')) {
     function dump(mixed $var): void
     {
@@ -37,4 +39,11 @@ function render(string $name, array $data = [], string $suffix = '.view'): void
     extract($data);
 
     require __DIR__ . "/../app/views/{$name}{$suffix}.php";
+}
+
+function authorize(bool $condition, int $status = Response::FORBIDDEN): void
+{
+    if (! $condition) {
+        abort($status);
+    }
 }
