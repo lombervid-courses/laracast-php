@@ -1,6 +1,9 @@
 <?php
 
 use App\Components\Database;
+use App\Components\Validator;
+
+require __DIR__ . '/../../src/Components/Validator.php';
 
 $config = require __DIR__ . '/../../bootstrap/config.php';
 $db = new Database($config['database'], 'db', 'db');
@@ -10,12 +13,8 @@ $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body = $_POST['body'];
 
-    if (strlen($body) === 0) {
-        $errors['body'] = 'A body is required';
-    }
-
-    if (strlen($body) > 1000) {
-        $errors['body'] = 'The body can not be more than 1,000 characters';
+    if (! Validator::string($body, 1, 1000)) {
+        $errors['body'] = 'A body of no more than 1,000 characters is required';
     }
 
     if (count($errors) === 0) {
