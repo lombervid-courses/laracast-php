@@ -5,6 +5,8 @@ function routes(): array
     return [
         '/' => 'home',
         '/about' => 'about',
+        '/notes' => 'notes',
+        '/note' => 'note',
         '/contact' => 'contact',
     ];
 }
