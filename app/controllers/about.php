@@ -1,3 +1,3 @@
 <?php
 
-render('about');
+render('about', ['heading' => 'About Us']);

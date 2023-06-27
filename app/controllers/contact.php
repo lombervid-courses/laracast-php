@@ -1,3 +1,3 @@
 <?php
 
-render('contact');
+render('contact', ['heading' => 'Contact Us']);
