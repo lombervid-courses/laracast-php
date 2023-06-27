@@ -1,20 +1,9 @@
 <?php
 
-function routes(): array
-{
-    return [
-        '/' => 'home',
-        '/about' => 'about',
-        '/notes' => 'notes',
-        '/note' => 'note',
-        '/contact' => 'contact',
-    ];
-}
+$routes = require __DIR__ . '/routes.php';
 
-function routeToController(string $uri): void
+function routeToController(string $uri, array $routes): void
 {
-    $routes = routes();
-
     if (array_key_exists($uri, $routes)) {
         controller($routes[$uri]);
     } else {
@@ -22,12 +11,11 @@ function routeToController(string $uri): void
     }
 }
 
-function abort(int $code = 404): void
+function abort(int $code = 404): never
 {
     http_response_code($code);
     render($code, suffix: '');
     die();
 }
 
-$uri = currentPage();
-routeToController($uri);
+routeToController(currentPage(), $routes);
