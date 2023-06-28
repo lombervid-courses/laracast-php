@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 $routes = require __DIR__ . '/routes.php';
 
 function routeToController(string $uri, array $routes): void
@@ -14,7 +16,7 @@ function routeToController(string $uri, array $routes): void
 function abort(int $code = 404): never
 {
     http_response_code($code);
-    render($code, suffix: '');
+    render("{$code}", suffix: '');
     die();
 }
 

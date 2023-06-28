@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Components\Database;
 
 $config = require __DIR__ . '/../../bootstrap/config.php';
