@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Components\Database;
 
-$config = require __BOOTSTRAP__ . '/config.php';
+$config = require base_path('/bootstrap/config.php');
 $db = new Database($config['database'], 'db', 'db');
 
 $currentUserId = 1;
@@ -19,4 +19,4 @@ if (!$note) {
 
 authorize($note->user_id === $currentUserId);
 
-render('notes/show', ['heading' => 'Note', 'note' => $note]);
+view('notes/show', ['heading' => 'Note', 'note' => $note]);

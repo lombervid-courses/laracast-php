@@ -33,14 +33,7 @@ function urlIs(string $url): bool
 
 function controller(string $name): void
 {
-    require __CONTROLLERS__ . "/{$name}.php";
-}
-
-function render(string $name, array $data = [], string $suffix = '.view'): void
-{
-    extract($data);
-
-    require __VIEWS__ . "/{$name}{$suffix}.php";
+    require app_path("/controllers/{$name}.php");
 }
 
 function authorize(bool $condition, int $status = Response::FORBIDDEN): void
@@ -48,4 +41,31 @@ function authorize(bool $condition, int $status = Response::FORBIDDEN): void
     if (! $condition) {
         abort($status);
     }
+}
+
+function base_path(string $path)
+{
+    return BASE_PATH . $path;
+}
+
+function app_path(string $path)
+{
+    return base_path('/app' . $path);
+}
+
+function src_path(string $path)
+{
+    return base_path('/src' . $path);
+}
+
+function render(string $name, array $attributes = []): void
+{
+    extract($attributes);
+
+    require app_path("/views/{$name}.php");
+}
+
+function view(string $name, array $attributes = []): void
+{
+    render($name . '.view', $attributes);
 }

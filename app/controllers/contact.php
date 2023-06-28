@@ -2,4 +2,4 @@
 
 declare(strict_types=1);
 
-render('contact', ['heading' => 'Contact Us']);
+view('contact', ['heading' => 'Contact Us']);

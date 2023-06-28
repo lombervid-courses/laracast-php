@@ -5,9 +5,7 @@ declare(strict_types=1);
 use App\Components\Database;
 use App\Components\Validator;
 
-require __SRC__ . '/Components/Validator.php';
-
-$config = require __BOOTSTRAP__ . '/config.php';
+$config = require base_path('/bootstrap/config.php');
 $db = new Database($config['database'], 'db', 'db');
 
 $errors = [];
@@ -27,4 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-render('notes/create', ['heading' => 'Create Note', 'errors' => $errors]);
+view('notes/create', ['heading' => 'Create Note', 'errors' => $errors]);

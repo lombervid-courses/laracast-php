@@ -1,6 +1,6 @@
-<?php require __VIEWS__ . '/partials/head.php'; ?>
-<?php require __VIEWS__ . '/partials/nav.php'; ?>
-<?php require __VIEWS__ . '/partials/banner.php'; ?>
+<?php render('partials/head'); ?>
+<?php render('partials/nav'); ?>
+<?php render('partials/banner'); ?>
 
 <main>
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
@@ -20,4 +20,4 @@
   </div>
 </main>
 
-<?php require __VIEWS__ . '/partials/footer.php'; ?>
+<?php render('partials/footer'); ?>
