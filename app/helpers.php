@@ -60,7 +60,9 @@ function config(string $path)
 
 function render(string $name, array $attributes = []): void
 {
-    extract($attributes);
+    global $viewAttributes;
+
+    extract($viewAttributes = ($viewAttributes ?? []) + $attributes);
 
     require app_path("views/{$name}.php");
 }
