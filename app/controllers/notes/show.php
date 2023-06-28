@@ -19,4 +19,4 @@ if (!$note) {
 
 authorize($note->user_id === $currentUserId);
 
-render('note', ['heading' => 'Note', 'note' => $note]);
+render('notes/show', ['heading' => 'Note', 'note' => $note]);

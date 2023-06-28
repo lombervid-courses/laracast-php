@@ -27,4 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-render('note-create', ['heading' => 'Create Note', 'errors' => $errors]);
+render('notes/create', ['heading' => 'Create Note', 'errors' => $errors]);
