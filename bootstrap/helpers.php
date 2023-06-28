@@ -33,14 +33,14 @@ function urlIs(string $url): bool
 
 function controller(string $name): void
 {
-    require __DIR__ . "/../app/controllers/{$name}.php";
+    require __CONTROLLERS__ . "/{$name}.php";
 }
 
 function render(string $name, array $data = [], string $suffix = '.view'): void
 {
     extract($data);
 
-    require __DIR__ . "/../app/views/{$name}{$suffix}.php";
+    require __VIEWS__ . "/{$name}{$suffix}.php";
 }
 
 function authorize(bool $condition, int $status = Response::FORBIDDEN): void

@@ -5,9 +5,9 @@ declare(strict_types=1);
 use App\Components\Database;
 use App\Components\Validator;
 
-require __DIR__ . '/../../src/Components/Validator.php';
+require __SRC__ . '/Components/Validator.php';
 
-$config = require __DIR__ . '/../../bootstrap/config.php';
+$config = require __BOOTSTRAP__ . '/config.php';
 $db = new Database($config['database'], 'db', 'db');
 
 $errors = [];
