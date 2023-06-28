@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$routes = require __DIR__ . '/routes.php';
+$routes = config('routes');
 
 function routeToController(string $uri, array $routes): void
 {

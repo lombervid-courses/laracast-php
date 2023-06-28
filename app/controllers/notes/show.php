@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Components\Database;
 
-$config = require base_path('/bootstrap/config.php');
+$config = config('app');
 $db = new Database($config['database'], 'db', 'db');
 
 $currentUserId = 1;

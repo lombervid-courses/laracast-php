@@ -33,7 +33,7 @@ function urlIs(string $url): bool
 
 function controller(string $name): void
 {
-    require app_path("/controllers/{$name}.php");
+    require app_path("controllers/{$name}.php");
 }
 
 function authorize(bool $condition, int $status = Response::FORBIDDEN): void
@@ -50,19 +50,19 @@ function base_path(string $path)
 
 function app_path(string $path)
 {
-    return base_path('/app' . $path);
+    return base_path('app/' . $path);
 }
 
-function src_path(string $path)
+function config(string $path)
 {
-    return base_path('/src' . $path);
+    return require base_path("config/{$path}.php");
 }
 
 function render(string $name, array $attributes = []): void
 {
     extract($attributes);
 
-    require app_path("/views/{$name}.php");
+    require app_path("views/{$name}.php");
 }
 
 function view(string $name, array $attributes = []): void

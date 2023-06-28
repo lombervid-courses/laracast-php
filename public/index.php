@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-const BASE_PATH = __DIR__ . '/..';
+const BASE_PATH = __DIR__ . '/../';
 
-require BASE_PATH  . '/bootstrap/helpers.php';
+require BASE_PATH  . '/app/helpers.php';
 
 spl_autoload_register(function ($class) {
     $path = str_replace(['\\', 'App'], [DIRECTORY_SEPARATOR, 'src'], $class);
@@ -12,4 +12,4 @@ spl_autoload_register(function ($class) {
     require_once base_path("/{$path}.php");
 });
 
-require base_path('/bootstrap/router.php');
+require app_path('router.php');

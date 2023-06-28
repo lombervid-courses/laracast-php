@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Components\Database;
 use App\Components\Validator;
 
-$config = require base_path('/bootstrap/config.php');
+$config = config('app');
 $db = new Database($config['database'], 'db', 'db');
 
 $errors = [];
