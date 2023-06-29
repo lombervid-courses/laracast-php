@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Application;
-use App\Database;
-use App\Validator;
+use Core\App;
+use Core\Database;
+use Core\Validator;
 
-$db = Application::resolve(Database::class);
+$db = App::resolve(Database::class);
 $errors = [];
 $body = $_POST['body'];
 

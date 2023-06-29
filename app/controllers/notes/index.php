@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Application;
-use App\Database;
+use Core\App;
+use Core\Database;
 
-$db = Application::resolve(Database::class);
+$db = App::resolve(Database::class);
 
 $notes = $db->query('SELECT * FROM notes WHERE user_id = :id;', ['id' => 1])->get();
 

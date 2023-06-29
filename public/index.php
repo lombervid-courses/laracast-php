@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-use App\Router;
+use Core\Router;
 
 const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH  . '/app/helpers.php';
 
 spl_autoload_register(function ($class) {
-    $path = preg_replace(['/\\\/', '/^App/'], [DIRECTORY_SEPARATOR, 'src'], $class);
+    $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
 
-    require_once base_path("/{$path}.php");
+    require_once base_path("src/{$path}.php");
 });
 
 require base_path('bootstrap/app.php');
