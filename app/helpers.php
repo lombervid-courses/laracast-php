@@ -31,9 +31,11 @@ function urlIs(string $url): bool
     return currentPage() === $url;
 }
 
-function controller(string $name): void
+function abort(int $code = 404): never
 {
-    require app_path("controllers/{$name}.php");
+    http_response_code($code);
+    render("{$code}");
+    die();
 }
 
 function authorize(bool $condition, int $status = Response::FORBIDDEN): void
