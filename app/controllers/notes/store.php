@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Components\Database;
-use App\Components\Validator;
+use App\Database;
+use App\Validator;
 
 $config = config('app');
 $db = new Database($config['database'], 'db', 'db');

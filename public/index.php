@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Components\Router;
+use App\Router;
 
 const BASE_PATH = __DIR__ . '/../';
 
@@ -15,7 +15,7 @@ spl_autoload_register(function ($class) {
 });
 
 $router = new Router();
-require app_path('routes.php');
+require base_path('routes/web.php');
 
 $uri = currentPage();
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];

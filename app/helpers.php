@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Components\Response;
+use App\Response;
 
 if (!function_exists('dump')) {
     function dump(mixed $var): void

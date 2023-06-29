@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Components\Database;
+use App\Database;
 
 $config = config('app');
 $db = new Database($config['database'], 'db', 'db');
