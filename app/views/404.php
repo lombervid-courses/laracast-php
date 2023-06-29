@@ -1,5 +1,5 @@
-<?php render('partials/head'); ?>
-<?php render('partials/nav'); ?>
+<?php $include('partials/head'); ?>
+<?php $include('partials/nav'); ?>
 
 <main>
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
@@ -11,4 +11,4 @@
   </div>
 </main>
 
-<?php render('partials/footer'); ?>
+<?php $include('partials/footer'); ?>

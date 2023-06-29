@@ -62,9 +62,9 @@ function config(string $path)
 
 function render(string $name, array $attributes = []): void
 {
-    global $viewAttributes;
+    $include = fn(string $name, array $attrs = []) => render($name, $attributes + $attrs);
 
-    extract($viewAttributes = ($viewAttributes ?? []) + $attributes);
+    extract($attributes);
 
     require app_path("views/{$name}.php");
 }
