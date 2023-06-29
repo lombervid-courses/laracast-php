@@ -4,21 +4,17 @@ declare(strict_types=1);
 
 use Core\Response;
 
-if (!function_exists('dump')) {
-    function dump(mixed $var): void
-    {
-        echo '<pre>';
-        var_dump($var);
-        echo '</pre>';
-    }
+function dump(mixed ...$values): void
+{
+    echo '<pre>';
+    var_dump(...$values);
+    echo '</pre>';
 }
 
-if (!function_exists('dd')) {
-    function dd(mixed $var): never
-    {
-        dump($var);
-        die();
-    }
+function dd(mixed ...$values): never
+{
+    dump(...$values);
+    die();
 }
 
 function currentPage(): string
