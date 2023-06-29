@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
+use App\Application;
 use App\Database;
 use App\Validator;
 
-$config = config('app');
-$db = new Database($config['database'], 'db', 'db');
-
+$db = Application::resolve(Database::class);
 $errors = [];
-
 $body = $_POST['body'];
 
 if (! Validator::string($body, 1, 1000)) {

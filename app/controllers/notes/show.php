@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Application;
 use App\Database;
 
-$config = config('app');
-$db = new Database($config['database'], 'db', 'db');
+$db = Application::resolve(Database::class);
 
 $currentUserId = 1;
 
