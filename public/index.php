@@ -8,6 +8,8 @@ const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH  . '/app/helpers.php';
 
+session_start();
+
 spl_autoload_register(function ($class) {
     $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
 
