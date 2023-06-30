@@ -4,48 +4,68 @@ declare(strict_types=1);
 
 namespace Core;
 
+use Core\Middleware\Middleware;
+
 class Router
 {
     protected array $routes = [];
 
-    public function add(string $method, string $uri, string $controller): void
+    public function add(string $method, string $uri, string $controller): static
     {
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
             'method' => $method,
+            'middleware' => null,
         ];
+
+        return $this;
     }
 
-    public function get(string $uri, string $controller): void
+    public function get(string $uri, string $controller): static
     {
-        $this->add('GET', $uri, $controller);
+        return $this->add('GET', $uri, $controller);
     }
 
-    public function post(string $uri, string $controller): void
+    public function post(string $uri, string $controller): static
     {
-        $this->add('POST', $uri, $controller);
+        return $this->add('POST', $uri, $controller);
     }
 
-    public function delete(string $uri, string $controller): void
+    public function delete(string $uri, string $controller): static
     {
-        $this->add('DELETE', $uri, $controller);
+        return $this->add('DELETE', $uri, $controller);
     }
 
-    public function patch(string $uri, string $controller): void
+    public function patch(string $uri, string $controller): static
     {
-        $this->add('PATCH', $uri, $controller);
+        return $this->add('PATCH', $uri, $controller);
     }
 
-    public function put(string $uri, string $controller): void
+    public function put(string $uri, string $controller): static
     {
-        $this->add('PUT', $uri, $controller);
+        return $this->add('PUT', $uri, $controller);
+    }
+
+    public function only(string $key): static
+    {
+        $index = array_key_last($this->routes);
+
+        if (is_null($index)) {
+            throw new \Exception('No route declared');
+        }
+
+        $this->routes[$index]['middleware'] = $key;
+
+        return $this;
     }
 
     public function route(string $uri, string $method): void
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+                Middleware::resolve($route['middleware']);
+
                 require app_path("controllers/{$route['controller']}.php");
                 return;
             }
