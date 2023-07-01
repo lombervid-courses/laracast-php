@@ -21,7 +21,7 @@
                           required
                         ><?= $_POST['body'] ?? '' ?></textarea>
 
-                        <?php if (isset($errors['body'])) : ?>
+                        <?php if (isset($errors['body'])): ?>
                           <p class="text-red-500 text-xs mt-2"><?= $errors['body'] ?></p>
                         <?php endif ?>
                       </div>

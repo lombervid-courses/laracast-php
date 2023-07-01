@@ -12,11 +12,11 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $errors = [];
 
-if (!Validator::email($email)) {
+if (! Validator::email($email)) {
     $errors['email'] = 'Please provide a valid email address';
 }
 
-if (!Validator::string($password)) {
+if (! Validator::string($password)) {
     $errors['password'] = 'Please provide a valid password';
 }
 

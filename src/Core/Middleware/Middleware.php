@@ -11,13 +11,13 @@ class Middleware
 
     public static function resolve(?string $key): void
     {
-        if (!$key) {
+        if (! $key) {
             return;
         }
 
         $middleware = Middleware::MAP[$key] ?? false;
 
-        if (!$middleware) {
+        if (! $middleware) {
             throw new \Exception("Not matching middleware found for key '{$key}'");
         }
 
