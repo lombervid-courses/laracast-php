@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 use Core\App;
 use Core\Database;
 use Core\Validator;
 
+$db = App::resolve(Database::class);
+
 $email = $_POST['email'];
 $password = $_POST['password'];
-
 $errors = [];
 
 if (!Validator::email($email)) {
@@ -23,7 +26,6 @@ if (count($errors)) {
     ]);
 }
 
-$db = App::resolve(Database::class);
 $user = $db->query('SELECT * from users WHERE email = :email;', [
     'email' => $email,
 ])->find();
@@ -39,9 +41,7 @@ $db->query('INSERT INTO users (email, password) VALUES (:email, :password);', [
     'password' => password_hash($password, PASSWORD_DEFAULT),
 ]);
 
-$_SESSION['user'] = [
-    'email' => $email,
-];
+login(['email' => $email]);
 
 // redirect to dashboard
 header('location: /');
