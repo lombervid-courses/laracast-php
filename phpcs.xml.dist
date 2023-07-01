@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard" namespace="MyProject\CS\Standard">
+    <description>PHP for Beginners Course</description>
+
+    <file>.</file>
+
+    <exclude-pattern>.ddev</exclude-pattern>
+    <exclude-pattern>database</exclude-pattern>
+
+    <arg name="extensions" value="php" />
+    <arg name="report" value="full"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <rule ref="PSR12"/>
+
+    <rule ref="Generic.Arrays.ArrayIndent" />
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" />
+    <rule ref="Generic.Strings.UnnecessaryStringConcat" />
+    <rule ref="Generic.Formatting.SpaceAfterNot" />
+
+    <rule ref="Squiz.ControlStructures.ControlSignature">
+        <properties>
+            <property name="requiredSpacesBeforeColon" value="0" />
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength.TooLong">
+        <exclude-pattern>app/views</exclude-pattern>
+    </rule>
+
+    <rule ref="Internal.NoCodeFound">
+        <exclude-pattern>app/views</exclude-pattern>
+    </rule>
+</ruleset>
