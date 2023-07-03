@@ -48,7 +48,7 @@ function base_path(string $path)
 
 function app_path(string $path)
 {
-    return base_path('app/' . $path);
+    return base_path("app/{$path}");
 }
 
 function config(string $path)
@@ -67,11 +67,11 @@ function render(string $name, array $attributes = []): void
 
 function view(string $name, array $attributes = []): void
 {
-    render($name . '.view', $attributes);
+    render("{$name}.view", $attributes);
 }
 
 function redirect(string $path): never
 {
-    header('location: ' . $path);
+    header("location: {$path}");
     exit();
 }
