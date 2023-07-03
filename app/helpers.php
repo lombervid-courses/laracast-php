@@ -70,28 +70,8 @@ function view(string $name, array $attributes = []): void
     render($name . '.view', $attributes);
 }
 
-function login(object|array $user): void
+function redirect(string $path): never
 {
-    $_SESSION['user'] = [
-        'email' => $user?->email ?? $user['email'],
-    ];
-
-    session_regenerate_id(true);
-}
-
-function logout(): void
-{
-    $_SESSION = [];
-    $params = session_get_cookie_params();
-
-    session_destroy();
-    setcookie(
-        'PHPSESSID',
-        '',
-        time() - 3600,
-        $params['path'],
-        $params['domain'],
-        $params['secure'],
-        $params['httponly'],
-    );
+    header('location: ' . $path);
+    exit();
 }
