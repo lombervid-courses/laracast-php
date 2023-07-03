@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-logout();
+use Core\Authenticator;
+
+(new Authenticator())->logout();
 
 header('location: /');
 exit();
