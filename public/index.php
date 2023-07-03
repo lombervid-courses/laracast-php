@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Core\Router;
+use Core\Session;
 
 const BASE_PATH = __DIR__ . '/../';
 
@@ -25,3 +26,5 @@ $uri = currentPage();
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 $router->route($uri, $method);
+
+Session::unflash();

@@ -2,4 +2,8 @@
 
 declare(strict_types=1);
 
-view('session/create');
+use Core\Session;
+
+view('session/create', [
+    'errors' => Session::getFlash('errors', []),
+]);

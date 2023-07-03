@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Core\Authenticator;
+use Core\Session;
 use Forms\LoginForm;
 
 $email = $_POST['email'];
@@ -18,6 +19,6 @@ if ($form->validate($email, $password)) {
     $form->error('email', 'Not matching account for that email address and password');
 }
 
-return view('session/create', [
-    'errors' => $form->errors(),
-]);
+Session::flash('errors', $form->errors());
+
+return redirect('/login');
