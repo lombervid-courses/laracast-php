@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Core\Response;
+use Core\Session;
 
 function dump(mixed ...$values): void
 {
@@ -74,4 +75,9 @@ function redirect(string $path): never
 {
     header("location: {$path}");
     exit();
+}
+
+function old(string $key, mixed $default = ''): mixed
+{
+    return Session::getFlash('old')[$key] ?? $default;
 }
