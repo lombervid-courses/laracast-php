@@ -1,0 +1,15 @@
+{
+    "name": "lombervid/laracast-php",
+    "authors": [
+        {
+            "name": "lombervid",
+            "email": "david.lomberlan@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {}
+}
